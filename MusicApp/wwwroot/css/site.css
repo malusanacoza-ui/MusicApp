@@ -1,88 +1,187 @@
-.container {
-    max-width: 100% !important;
-    padding: 0 !important;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+* {
+    box-sizing: border-box;
 }
 
-/* =========================
-   FULL SCREEN SPOTIFY-STYLE ALBUM WALL
-========================= */
-html, body {
-    height: 100%;
+body {
     margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #121212;
+    color: white;
 }
 
-/* Container covering full viewport */
-.album-wall {
+/* NAV */
+.spotify-nav {
+    background: #000;
+    height: 56px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    top: 56px;
+    bottom: 90px;
+    left: 0;
+    width: 220px;
+    background: #000;
+    padding: 20px;
+}
+
+    .sidebar a {
+        display: block;
+        color: #b3b3b3;
+        margin-bottom: 15px;
+        text-decoration: none;
+    }
+
+        .sidebar a:hover {
+            color: #fff;
+        }
+
+/* MAIN */
+.main-content {
+    margin-left: 220px;
+    padding-bottom: 120px;
+}
+
+/* HERO */
+.full-page-hero {
     position: relative;
-    width: 100%;
-    height: 100vh; /* full screen */
+    height: calc(100vh - 56px);
     overflow: hidden;
 }
 
-/* Scrolling album track */
-.album-track {
+.album-wall {
     position: absolute;
+    inset: 0;
+}
+
+.album-track {
     display: flex;
-    flex-wrap: wrap;
-    width: 200%; /* allow smooth horizontal scrolling */
-    height: 100%; /* full height */
+    width: 200%;
+    height: 100%;
     animation: scrollAlbums 60s linear infinite;
 }
 
     .album-track img {
-        width: 25%; /* 4 images per row */
-        height: 50%; /* 2 rows for full screen */
+        width: 25%;
         object-fit: cover;
     }
 
-/* Animation */
 @keyframes scrollAlbums {
-    0% {
+    from {
         transform: translateX(0);
     }
 
-    100% {
+    to {
         transform: translateX(-50%);
     }
 }
 
-/* Dark overlay to make text readable */
 .album-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0,0,0,.75);
     display: flex;
-    align-items: center;
     justify-content: center;
-    z-index: 2;
+    align-items: center;
 }
 
-/* Hero content */
 .hero-content {
     text-align: center;
-    color: #ffffff;
 }
 
-    .hero-content h1 {
-        font-size: 48px;
-        margin-bottom: 15px;
+    .hero-content h1 span {
+        color: #1db954;
     }
 
-    .hero-content p {
-        font-size: 18px;
-        margin-bottom: 25px;
-    }
-
-/* Button */
 .btn-music {
-    padding: 12px 30px;
-    background-color: #1db954;
-    color: #000;
-    border-radius: 25px;
+    background: #1db954;
+    padding: 14px 36px;
+    border-radius: 30px;
+    color: black;
     text-decoration: none;
     font-weight: bold;
 }
 
-    .btn-music:hover {
-        background-color: #1ed760;
+/* MUSIC LIST */
+.music-panel {
+    padding: 40px;
+}
+
+.track-list {
+    background: #181818;
+    border-radius: 10px;
+}
+
+.track-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+    .track-row:hover {
+        background: #222;
+    }
+
+.track-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+    .track-left img {
+        width: 50px;
+        height: 50px;
+        border-radius: 6px;
+    }
+
+.track-title {
+    font-weight: 600;
+}
+
+.track-artist {
+    font-size: 13px;
+    color: #b3b3b3;
+}
+
+.play-btn {
+    background: none;
+    border: none;
+    color: #1db954;
+    font-size: 20px;
+}
+
+.track-download {
+    color: #1db954;
+    text-decoration: none;
+}
+
+/* PLAYER */
+.player-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: #181818;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-top: 1px solid #2a2a2a;
+}
+
+.player-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+    .player-left img {
+        width: 56px;
+        height: 56px;
+        border-radius: 6px;
     }

@@ -1,22 +1,38 @@
-﻿@model List<Music>
-@using MusicApp.Models
+﻿@model IEnumerable<MusicApp.Models.Music>
 
-<h2>🎵 Music Streaming App</h2>
-
-@foreach (var song in Model)
-{
-    <div style="margin-bottom:20px;">
-        <strong>@song.Title</strong><br />
-
-        <audio controls>
-            <source src="/music/@song.FileName" type="audio/mpeg">
-        </audio>
-        <br />
-
-        <a asp-controller="Music"
-           asp-action="Download"
-           asp-route-fileName="@song.FileName">
-            Download
-        </a>
-    </div>
+@{
+    ViewData["Title"] = "Music";
 }
+
+<div class="music-panel">
+
+    <h2 class="mb-4">🎧 Browse Music</h2>
+
+    <div class="track-list">
+        @foreach (var song in Model)
+        {
+            <div class="track-row">
+                <div class="track-left">
+                    <img src="/images/wave.jpg" />
+                    <div>
+                        <div class="track-title">@song.Title</div>
+                        <div class="track-artist">Unknown Artist</div>
+                    </div>
+                </div>
+
+                <button class="play-btn"
+                        onclick="playSong('/music/@song.FileName', '@song.Title')">
+                    ▶
+                </button>
+
+                <a asp-controller="Music"
+                   asp-action="Download"
+                   asp-route-fileName="@song.FileName"
+                   class="track-download">
+                    ⬇ Download
+                </a>
+            </div>
+        }
+    </div>
+
+</div>

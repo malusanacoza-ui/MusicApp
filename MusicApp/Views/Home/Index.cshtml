@@ -1,27 +1,30 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="album-wall">
-    <div class="album-track">
-        <!-- Repeat images for smooth looping -->
-        <img src="/images/cardi.jpg" />
-        <img src="/images/wave.jpg" />
-        <img src="/images/blossy.jfif" />
-        <img src="/images/am i the drama.jfif" />
-        <img src="/images/cardi.jpg" />
-        <img src="/images/wave.jpg" />
-        <img src="/images/blossy.jfif" />
-        <img src="/images/am i the drama.jfif" />
+<div class="full-page-hero">
+
+    <div class="album-wall">
+        <div class="album-track">
+            <img src="/images/am i the drama.jfif" />
+            <img src="/images/blossy.jfif" />
+            <img src="/images/cardi.jpg" />
+            <img src="/images/wave.jpg" />
+            <img src="/images/am i the drama.jfif" />
+            <img src="/images/blossy.jfif" />
+            <img src="/images/cardi.jpg" />
+            <img src="/images/wave.jpg" />
+        </div>
     </div>
 
     <div class="album-overlay">
         <div class="hero-content">
-            <h1>🎵 Lucy's Music App</h1>
-            <p>Stream and download your favorite music</p>
-            <a class="btn-music" href="/Music">Go to Music</a>
+            <h1><span>Lucy’s Music</span></h1>
+            <p>Stream & download your favorite tracks</p>
+
+            <a asp-controller="Music" asp-action="Index" class="btn-music">
+                Open Player
+            </a>
         </div>
     </div>
 </div>
-
-
