@@ -1,56 +1,88 @@
-/* =========================
-   GLOBAL DARK THEME
-========================= */
-body {
-    background-color: #121212;
-    color: #ffffff;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-/* Headings */
-h2 {
-    color: #1db954;
-    margin-bottom: 30px;
+.container {
+    max-width: 100% !important;
+    padding: 0 !important;
 }
 
 /* =========================
-   MUSIC PAGE STYLES
+   FULL SCREEN SPOTIFY-STYLE ALBUM WALL
 ========================= */
-
-/* Each song block (targets your existing divs) */
-div[style*="margin-bottom"] {
-    background-color: #181818;
-    padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 20px !important;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
-/* Song title */
-strong {
-    font-size: 18px;
-    display: block;
-    margin-bottom: 8px;
-}
-
-/* Audio player */
-audio {
+/* Container covering full viewport */
+.album-wall {
+    position: relative;
     width: 100%;
-    margin-top: 10px;
+    height: 100vh; /* full screen */
+    overflow: hidden;
 }
 
-/* Download link */
-a[href*="Download"] {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 8px 18px;
+/* Scrolling album track */
+.album-track {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    width: 200%; /* allow smooth horizontal scrolling */
+    height: 100%; /* full height */
+    animation: scrollAlbums 60s linear infinite;
+}
+
+    .album-track img {
+        width: 25%; /* 4 images per row */
+        height: 50%; /* 2 rows for full screen */
+        object-fit: cover;
+    }
+
+/* Animation */
+@keyframes scrollAlbums {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Dark overlay to make text readable */
+.album-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* Hero content */
+.hero-content {
+    text-align: center;
+    color: #ffffff;
+}
+
+    .hero-content h1 {
+        font-size: 48px;
+        margin-bottom: 15px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+
+/* Button */
+.btn-music {
+    padding: 12px 30px;
     background-color: #1db954;
-    color: #000 !important;
-    border-radius: 20px;
+    color: #000;
+    border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
 }
 
-    a[href*="Download"]:hover {
+    .btn-music:hover {
         background-color: #1ed760;
     }

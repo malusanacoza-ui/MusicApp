@@ -2,14 +2,26 @@
     ViewData["Title"] = "Home Page";
 }
 
-<<div class="text-center">
-    <h1>🎵 Lucy's Music App</h1>
-    <p>Stream and download your favorite music</p>
+<div class="album-wall">
+    <div class="album-track">
+        <!-- Repeat images for smooth looping -->
+        <img src="/images/cardi.jpg" />
+        <img src="/images/wave.jpg" />
+        <img src="/images/blossy.jfif" />
+        <img src="/images/am i the drama.jfif" />
+        <img src="/images/cardi.jpg" />
+        <img src="/images/wave.jpg" />
+        <img src="/images/blossy.jfif" />
+        <img src="/images/am i the drama.jfif" />
+    </div>
 
-    <a asp-controller="Music"
-       asp-action="Index"
-       class="btn btn-success">
-        Go to Music
-    </a>
+    <div class="album-overlay">
+        <div class="hero-content">
+            <h1>🎵 Lucy's Music App</h1>
+            <p>Stream and download your favorite music</p>
+            <a class="btn-music" href="/Music">Go to Music</a>
+        </div>
+    </div>
 </div>
+
 
