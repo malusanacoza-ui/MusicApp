@@ -1,0 +1,22 @@
+﻿@model List<Music>
+@using MusicApp.Models
+
+<h2>🎵 Music Streaming App</h2>
+
+@foreach (var song in Model)
+{
+    <div style="margin-bottom:20px;">
+        <strong>@song.Title</strong><br />
+
+        <audio controls>
+            <source src="/music/@song.FileName" type="audio/mpeg">
+        </audio>
+        <br />
+
+        <a asp-controller="Music"
+           asp-action="Download"
+           asp-route-fileName="@song.FileName">
+            Download
+        </a>
+    </div>
+}
