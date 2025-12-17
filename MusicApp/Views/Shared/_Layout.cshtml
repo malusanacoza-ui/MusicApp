@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
+<script>
+    function toggleFavorite(fileName, btn) {
+        fetch('/Music/ToggleFavorite', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `fileName=${encodeURIComponent(fileName)}`
+        }).then(() => {
+            btn.classList.toggle('liked');
+        });
+    }
+</script>
+
 <body>
 
     <!-- NAVBAR -->
@@ -22,7 +36,8 @@
     <div class="sidebar">
         <a asp-controller="Home" asp-action="Index">🏠 Home</a>
         <a asp-controller="Music" asp-action="Index">🎧 Browse</a>
-        <a href="#">❤️ Liked Songs</a>
+        <a asp-controller="Music" asp-action="LikedSongs">❤️ Liked Songs</a>
+
     </div>
 
     <!-- MAIN CONTENT -->

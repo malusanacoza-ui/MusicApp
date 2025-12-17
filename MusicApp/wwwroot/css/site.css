@@ -1,3 +1,15 @@
+.fav-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #b3b3b3;
+}
+
+    .fav-btn.liked {
+        color: #1db954;
+    }
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 * {

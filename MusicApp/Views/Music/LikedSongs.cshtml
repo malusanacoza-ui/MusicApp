@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MusicApp.Models.Music>
+
+@{
+    ViewData["Title"] = "Liked Songs";
+}
+
+<div class="music-panel">
+
+    <h2>❤️ Liked Songs</h2>
+
+    @if (!Model.Any())
+    {
+        <p style="color:#b3b3b3;">You haven’t liked any songs yet.</p>
+    }
+    else
+    {
+        <div class="track-list">
+            @foreach (var song in Model)
+            {
+                <div class="track-row">
+
+                    <div class="track-left">
+                        <img src="/images/wave.jpg" />
+                        <div>
+                            <div class="track-title">@song.Title</div>
+                            <div class="track-artist">Favorite</div>
+                        </div>
+                    </div>
+
+                    <!-- ❤️ UNLIKE -->
+                    <button class="fav-btn liked"
+                            onclick="toggleFavorite('@song.FileName', this)">
+                        ❤️
+                    </button>
+
+                    <!-- ▶ PLAY -->
+                    <button class="play-btn"
+                            onclick="playSong('/music/@song.FileName', '@song.Title')">
+                        ▶
+                    </button>
+
+                    <!-- ⬇ DOWNLOAD -->
+                    <a asp-controller="Music"
+                       asp-action="Download"
+                       asp-route-fileName="@song.FileName"
+                       class="track-download">
+                        ⬇
+                    </a>
+
+                </div>
+            }
+        </div>
+    }
+</div>
